@@ -8,10 +8,10 @@ export default {
         rangeDate1: ['2015-12-06','2016-12-06'],
         rangeDate2: ['2015-12-06','2016-12-06'],
         rangeDate3: ['2015-12-06','2016-12-06'],
-        time1: '2015-12-06 23:12',
-        time2: '2015-12-06 23:12',
-        rangeTime1: ['2015-12-06 23:12','2016-12-06 23:59'],
-        rangeTime2: ['2015-12-06 23:12','2016-12-06 23:12']
+        time1: '2015/12/06 23:12',
+        time2: '2222-11-11 12:12',
+        rangeTime1: ['2015/11/11 23:12','2016/12/12 23:12'],
+        rangeTime2: ['2015/11/11 23:12','2016/12/12 23:12']
     }),
     watch: {
         date1(val){
@@ -48,7 +48,7 @@ export default {
             }]
         },
         disabledRangeTime(){
-            return [{ 
+            return [{
                 disabledHours: (h) => this.range(0, 24).splice(4, 20).includes(h),
                 disabledMinutes: (m) => this.range(30, 60).includes(m)
             },{
@@ -76,7 +76,7 @@ export default {
 </summary>
 
 ```html
-<template>                        
+<template>
     <v-date-picker v-model="date1" clearable @change="change"></v-date-picker>
     <v-date-picker v-model="rangeDate1" range clearable @confirm="confirm" @change="rangeChange"></v-date-picker>
 </template>
@@ -163,7 +163,7 @@ export default {
 </summary>
 
 ```html
-<template>  
+<template>
     <v-date-picker clearable show-time v-model="time1" @change="change"></v-date-picker>
     <v-date-picker range show-time v-model="rangeTime1" clearable></v-date-picker>
 </template>
@@ -190,7 +190,7 @@ export default {
 </summary>
 
 ```html
-<template>                        
+<template>
     <v-date-picker v-model="time2" show-time :disabled-date="disabledDate" :disabled-time="disabledTime()"></v-date-picker>
     <v-date-picker v-model="rangeTime2" range show-time :disabled-date="disabledDate" :disabled-time="disabledRangeTime()"></v-date-picker>
 </template>
@@ -218,7 +218,7 @@ export default {
             }]
         },
         disabledRangeTime(){
-            return [{ 
+            return [{
                 disabledHours: (h) => this.range(0, 24).splice(4, 20).includes(h),
                 disabledMinutes: (m) => this.range(30, 60).includes(m)
             },{

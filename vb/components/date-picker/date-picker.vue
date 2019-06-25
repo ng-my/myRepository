@@ -221,7 +221,7 @@
                         val = `${val} ${this.timeVal[0]}`;
                     }
                 }
-                return val;
+                return this.formatForIE(val);
             },
             dateCls() {
                 let $VUEBEAUTYSIZE = '';
@@ -282,6 +282,7 @@
                 this.updateAll();
             },
             label(val) {
+                val = this.formatForIE(val);
                 this.timeBtnEnable = !!val;
                 if (!val) {
                     this.timeSelected = false;
@@ -629,9 +630,27 @@
                     s: seconds,
                     S: milliseconds,
                 };
-                return format.replace(/y+|M+|d+|H+|h+|m+|s+|S+/g, function (str) {
+                const myTime = format.replace(/y+|M+|d+|H+|h+|m+|s+|S+/g, function (str) {
                     return map[str];
                 });
+                return this.formatForIE(myTime);
+            },
+            formatForIE(time) {
+                if (navigator.userAgent.includes('Trident')) {
+                    if (typeof (time) === 'string') {
+                        for (let i = 0; i < 10; i++) {
+                            time = time.replace('-', '/');
+                        }
+                    }
+                    if (typeof (time) === 'object') {
+                        for (let i = 0; i < time.length; i++) {
+                            for (let j = 0; j < 10; j++) {
+                                time[i] = time[i].replace('-', '/');
+                            }
+                        }
+                    }
+                }
+                return time;
             },
             // 显示年份选择器
             showYear(no) {

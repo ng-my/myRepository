@@ -94,7 +94,6 @@
                 this.$refs.select.toggleDropdown();
             },
             check(data) {
-                console.log(data);
                 if (!this.multiple) return;
                 const temp = [];
                 for (let i = 0; i < data.length; i++) {
