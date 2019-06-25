@@ -200,6 +200,13 @@
                 bottomSpace: 0,
             };
         },
+        created() {
+            this.value = this.formatForIE(this.value);
+            if (this.range && this.value) {
+                this.startTime = this.formatForIE(this.startTime);
+                this.endTime = this.formatForIE(this.endTime);
+            }
+        },
         computed: {
             label() {
                 let val = '';
@@ -221,7 +228,7 @@
                         val = `${val} ${this.timeVal[0]}`;
                     }
                 }
-                return this.formatForIE(val);
+                return val;
             },
             dateCls() {
                 let $VUEBEAUTYSIZE = '';
@@ -282,7 +289,6 @@
                 this.updateAll();
             },
             label(val) {
-                val = this.formatForIE(val);
                 this.timeBtnEnable = !!val;
                 if (!val) {
                     this.timeSelected = false;
@@ -637,16 +643,15 @@
             },
             formatForIE(time) {
                 if (navigator.userAgent.includes('Trident')) {
-                    if (typeof (time) === 'string') {
-                        for (let i = 0; i < 10; i++) {
-                            time = time.replace('-', '/');
-                        }
-                    }
-                    if (typeof (time) === 'object') {
+                    if (time instanceof Array) {
                         for (let i = 0; i < time.length; i++) {
                             for (let j = 0; j < 10; j++) {
                                 time[i] = time[i].replace('-', '/');
                             }
+                        }
+                    } else {
+                        for (let i = 0; i < 10; i++) {
+                            time = time.replace('-', '/');
                         }
                     }
                 }
