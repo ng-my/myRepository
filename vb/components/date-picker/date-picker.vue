@@ -643,6 +643,7 @@
             },
             formatForIE(time) {
                 if (navigator.userAgent.includes('Trident')) {
+                    this.format = 'yyyy/MM/dd';
                     if (time instanceof Array) {
                         for (let i = 0; i < time.length; i++) {
                             for (let j = 0; j < 10; j++) {

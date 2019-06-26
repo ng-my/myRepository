@@ -104,7 +104,10 @@
                 }
             },
             defaultValue(newVal) {
-                const newDate = new Date(`2017-08-08 ${newVal}`);
+                let newDate = new Date(`2017-08-08 ${newVal}`);
+                if (navigator.userAgent.includes('Trident')) {
+                    newDate = new Date(`2017/08/08 ${newVal}`);
+                }
                 if (newDate.getTime()) {
                     this.$emit('input', newVal);
                     const tArr = newVal.split(':');
