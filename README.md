@@ -9,6 +9,10 @@
 # yhq-vue-beauty [![npm](http://img.shields.io/npm/v/vue-beauty.svg)](https://www.npmjs.com/package/vue-beauty) [![NPM downloads](http://img.shields.io/npm/dm/vue-beauty.svg)](https://www.npmjs.com/package/vue-beauty) [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://www.npmjs.com/package/vue-beauty)
 Beautiful  UI components build with vue and ant design
 
+## 更新
+- treeSelect组件 children>10 的check bug修复
+- 带有时分秒的日期组件对IE的兼容性
+
 ## 特性
 - 丰富的组件，涵盖常用场景
 - 基于vue组件化开发，数据驱动视图

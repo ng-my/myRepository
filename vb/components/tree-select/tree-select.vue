@@ -139,10 +139,10 @@
                 let node = this.$refs.tree;
                 let i = 1;
                 for (; i < route.length - 1; i++) {
-                    node = node.$children[route[i]];
+                    node = node.$children[(route[i] / 1)];
                 }
-                const item = node.data[route[i]];
-                node.setCheck(item.disabled, route[i]);
+                const item = node.data[(route[i] / 1)];
+                node.setCheck(item.disabled, (route[i] / 1));
             },
             searchFn(val) {
                 console.log(val);
