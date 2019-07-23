@@ -134,11 +134,33 @@
                     }
                 }
             },
+            formatClue(index) {
+                let myClue = index;
+                if (index < 10) {
+                    myClue = `00${index}`;
+                } else if (index < 100) {
+                    myClue = `0${index}`;
+                }
+                return myClue;
+            },
+            fillTree(node) {
+                for (let i = 0; i < node.$children.length; i++) {
+                    const nodeItem = node.$children[i];
+                    const clueArr = nodeItem.clue.split('-');
+                    const clueLast = clueArr[clueArr.length - 1] / 1;
+                    if (clueLast !== i) {
+                        node.$children.splice(i, 0, { clue: `${node.clue}-${this.formatClue(i)}` });
+                        i--;
+                    }
+                }
+                return node;
+            },
             setCheck(clue) {
                 const route = clue.split('-');
                 let node = this.$refs.tree;
                 let i = 1;
                 for (; i < route.length - 1; i++) {
+                    this.fillTree(node);
                     node = node.$children[(route[i] / 1)];
                 }
                 const item = node.data[(route[i] / 1)];

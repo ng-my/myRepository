@@ -30360,11 +30360,33 @@ if (false) {(function () {
                 }
             }
         },
+        formatClue: function formatClue(index) {
+            var myClue = index;
+            if (index < 10) {
+                myClue = '00' + index;
+            } else if (index < 100) {
+                myClue = '0' + index;
+            }
+            return myClue;
+        },
+        fillTree: function fillTree(node) {
+            for (var i = 0; i < node.$children.length; i++) {
+                var nodeItem = node.$children[i];
+                var clueArr = nodeItem.clue.split('-');
+                var clueLast = clueArr[clueArr.length - 1] / 1;
+                if (clueLast !== i) {
+                    node.$children.splice(i, 0, { clue: node.clue + '-' + this.formatClue(i) });
+                    i--;
+                }
+            }
+            return node;
+        },
         setCheck: function setCheck(clue) {
             var route = clue.split('-');
             var node = this.$refs.tree;
             var i = 1;
             for (; i < route.length - 1; i++) {
+                this.fillTree(node);
                 node = node.$children[route[i] / 1];
             }
             var item = node.data[route[i] / 1];

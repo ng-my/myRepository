@@ -43,45 +43,56 @@ export default {
         }]
       }],
       treeData2: [{
-        title: 'parent 1',
+        title: 'parent 111',
         expanded: true,
-        children: [{
+        children: [
+        {
+          title: 'yhqChild',
+          expanded: true,
+          children: [{
+            title: 'yhq-1',
+          }, {
+            title: 'yhq-2',
+          }, {
+            title: 'yhq-3',
+          }]
+        },{
+        title: 'only'
+        },{
           title: 'parent 1-0',
           expanded: true,
           children: [{
-            title: '1',
+            title: '111',
           }, {
-            title: '2',
+            title: '222',
           }, {
-            title: '3',
-          }, {
-           title: '4',
-         }, {
-           title: '5',
-          }, {
-           title: '6',
-         }, {
-           title: '7',
-         }, {
-           title: '8',
-         }, {
-           title: '9',
-         }, {
-           title: '10',
-         }, {
-           title: '11',
-         }, {
-           title: '12',
-         }, {
-           title: '13',
-         }]
+            title: '333',
+          }]
         }, {
           title: 'parent 1-1',
+          expanded: true,
           children: [{
-            title: "<span style='color: #08c'>sss</span>"
+            title: "aaa"
+          },
+          {
+            title: "bbb"
+          },
+          {
+            title: "ccc"
           }]
         }, {
           title: 'parent 1-2',
+          expanded: true,
+          children: [
+          {
+            title: "xxx"
+          },
+         {
+           title: "yyy"
+          },
+         {
+           title: "zzz"
+          }]
         }]
       }],
       asyncData:  [
